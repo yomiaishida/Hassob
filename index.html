@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+  <title>Hassob</title>
+</head>
+<body>
+  <div class="header">
+    <h3>Questionaire</h3>
+  </div>
+  <div class="container">
+    <p class="lead">Please answer all questions</p>
+    <form class="form">
+      <div class="form-group">
+
+        <div>
+          <p>Please select your gender:</p>
+          <input type="radio" id="male" name="gender" value="male">
+          <label for="male">Male</label><br>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female">Female</label><br>
+          <input type="radio" id="bisexual" name="gender" value=bisexual">
+          <label for="other">Bi-sexual</label><br>
+          <input type="radio" id="notspecify" name="gender" value=notspecify">
+          <label for="notspecify">Prefer not to specicy</label>
+        </div>
+        <div>
+          <p>Which option best describes your current position?</p>
+        <select class="form-control" placeholder="position" id="position">
+          <option>student</option>
+          <option>employed</option>
+          <option>Trader</option>
+          <option>Other</option>
+        </select>
+        </div>
+        <div>
+          <p>Select area/areas of interest</p><br>
+          <input type="checkbox" value="options1">Frontend<br>
+          <input type="checkbox" value="options2">Backend<br>
+          <input type="checkbox" value="options3">Project Management<br>
+          <input type="checkbox" value="options4">Designer<br>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-input"
+            placeholder="Enter Email"
+            id="email"
+          />
+        </div>
+      </div>
+      
+      <input type="submit" value="Submit" class="submit-btn" />
+    </form>
+</body>
+</html>
