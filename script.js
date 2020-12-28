@@ -7,6 +7,7 @@ const subBtn = document
   .addEventListener("click", submit);
 let radBtn = document.getElementsByClassName("rad");
 let ckBoxes = document.getElementsByName("ck");
+const bodyEl = document.querySelector("body");
 
 const question1 = document.getElementById("gender").innerText;
 const question2 = document.getElementById("question2").innerText;
@@ -85,9 +86,14 @@ function submit(e) {
 
   emailValidation();
 
-  // Local storage
-  console.log(newCard);
-  // Clear Card
+  // Display Success Message
+  alert(`You've successfully filled the questionaire`);
 
-  // Get data from local storage to display on screen
+  // Stringify Object
+  const myObj = JSON.stringify(newCard);
+
+  // Display on screen
+  bodyEl.innerText = myObj;
+  // Clear Card
+  newCard = {};
 }
