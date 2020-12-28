@@ -8,19 +8,17 @@ const subBtn = document
 let radBtn = document.getElementsByClassName("rad");
 let ckBoxes = document.getElementsByName("ck");
 
-console.log(emailEl.type);
+const question1 = document.getElementById("gender").innerText;
+const question2 = document.getElementById("question2").innerText;
+const question3 = document.getElementById("interest").innerText;
+const question4 = document.getElementById("question4").innerText;
 
-const question1 = genderEl.value;
-const question2 = positionEl.value;
-const question3 = interestEl.value;
-const question4 = emailEl.type;
+const newCard = {};
 
-const newCard = {
-  question1: null,
-  question2: null,
-  question3: [],
-  question4: null,
-};
+function isValidEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
 
 function checkforblank() {
   var position = document.getElementById("position");
@@ -29,7 +27,7 @@ function checkforblank() {
   if (invalid) {
     alert("Please select position");
   } else {
-    newCard.question2 = position.value;
+    newCard[question2] = position.value;
   }
 
   return !invalid;
@@ -43,11 +41,25 @@ function validate_form() {
     valid = false;
   } else {
     for (let checkbox of ckBoxes) {
-      if (checkbox.checked) newCard.question3.push(checkbox.value);
+      if (checkbox.checked) {
+        newCard[question3] = [];
+        newCard[question3].push(checkbox.value);
+      }
     }
   }
 
   return valid;
+}
+
+function emailValidation(email) {
+  email = emailEl.value;
+  if (email === "" || !isValidEmail(email)) {
+    alert("Please type in a valid email address");
+  } else {
+    const emailValue = emailEl.value;
+    console.log(emailValue);
+    newCard[question4] = emailValue;
+  }
 }
 
 function submit(e) {
@@ -62,7 +74,7 @@ function submit(e) {
   }
 
   if (selectedVal) {
-    newCard.question1 = selectedVal.value;
+    newCard[question1] = selectedVal.value;
   } else alert("please...");
 
   // Check for blank select dropdown
@@ -71,5 +83,11 @@ function submit(e) {
   // Validate that at least one checkbox is selected
   validate_form();
 
+  emailValidation();
+
+  // Local storage
   console.log(newCard);
+  // Clear Card
+
+  // Get data from local storage to display on screen
 }
