@@ -41,12 +41,12 @@ function isValidEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
-function checkforblank() {
-  var position = document.getElementById("position");
-  var invalid = position.value == "Please Select";
+function checkForBlankSelect() {
+  let position = document.getElementById("position");
+  let invalid = position.value == "Please Select";
 
   if (invalid) {
-    boolVal = true;
+    boolVal = false;
     alert("Please select position");
   } else {
     newCard[question2] = position.value;
@@ -106,13 +106,15 @@ function formSubmition() {
   }
 }
 
+// Submit Event
 function submit(e) {
   e.preventDefault();
 
+  // Radio Button Validation
   radioBtnValidation();
 
   // Check for blank select dropdown
-  checkforblank();
+  checkForBlankSelect();
 
   // Validate that at least one checkbox is selected
   validate_form();
