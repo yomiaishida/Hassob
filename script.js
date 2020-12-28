@@ -14,7 +14,7 @@ const question2 = document.getElementById("question2").innerText;
 const question3 = document.getElementById("interest").innerText;
 const question4 = document.getElementById("question4").innerText;
 
-const newCard = {};
+let newCard = { [question3]: [] };
 
 function isValidEmail(email) {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -43,7 +43,6 @@ function validate_form() {
   } else {
     for (let checkbox of ckBoxes) {
       if (checkbox.checked) {
-        newCard[question3] = [];
         newCard[question3].push(checkbox.value);
       }
     }
@@ -85,12 +84,14 @@ function submit(e) {
   validate_form();
 
   emailValidation();
+  console.log(newCard);
 
   // Display Success Message
   alert(`You've successfully filled the questionaire`);
 
   // Stringify Object
   const myObj = JSON.stringify(newCard);
+  console.log(myObj);
 
   // Display on screen
   bodyEl.innerText = myObj;
